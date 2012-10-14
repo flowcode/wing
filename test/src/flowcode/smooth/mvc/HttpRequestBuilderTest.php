@@ -2,6 +2,7 @@
 
 namespace flowcode\smooth\mvc;
 
+require_once dirname(__FILE__) . '/../../../../../src/flowcode/smooth/mvc/Autoloader.class.php';
 require_once dirname(__FILE__) . '/../../../../../src/flowcode/smooth/mvc/HttpRequestBuilder.class.php';
 
 /**
@@ -35,11 +36,23 @@ class HttpRequestBuilderTest extends \PHPUnit_Framework_TestCase {
      * @covers flowcode\smooth\mvc\HttpRequestBuilder::buildFromRequestUrl
      * @todo Implement testBuildFromRequestUrl().
      */
-    public function testBuildFromRequestUrl() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    public function testBuildFromRequestUrl_emptyUrl_returnDefaultControllerAndAction() {
+        $requestUrl = "";
+        $httpRequestInstance = $this->object->buildFromRequestUrl($requestUrl);
+
+        $this->assertEquals("HomeController", $httpRequestInstance->getControllerClass());
+    }
+
+    /**
+     * @covers flowcode\smooth\mvc\HttpRequestBuilder::buildFromRequestUrl
+     * @todo Implement testBuildFromRequestUrl().
+     */
+    public function testBuildFromRequestUrl_demoUrl_returnDemoController() {
+        $requestUrl = "/demo/hello";
+        $httpRequestInstance = $this->object->buildFromRequestUrl($requestUrl);
+
+        $this->assertEquals("DemoController", $httpRequestInstance->getControllerClass());
+        $this->assertEquals("hello", $httpRequestInstance->getAction());
     }
 
 }

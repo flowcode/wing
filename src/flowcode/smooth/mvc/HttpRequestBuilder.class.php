@@ -12,7 +12,7 @@ use flowcode\smooth\mvc\Router;
  */
 class HttpRequestBuilder {
 
-    public function buildFromRequestUrl($requestUrl) {
+    public function buildFromRequestUrl($requestedUrl) {
         $instance = new HttpRequest();
         $instance->setRequestedUrl($requestedUrl);
 

@@ -16,7 +16,7 @@ class Router {
         $framework_base = dirname ( __FILE__ )."/../../";
         
         // Parse with sections
-        $config = parse_ini_file($framework_base."inter/config/routing.ini", true);
+        $config = parse_ini_file($framework_base."demo/config/routing.ini", true);
         if(isset($config[$section][$param])){
             return $config[$section][$param];
         }else{

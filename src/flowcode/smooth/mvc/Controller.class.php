@@ -1,6 +1,6 @@
 <?php
 
-namespace flowcode\mvc\kernel;
+namespace flowcode\smooth\mvc;
 
 /**
  * Description of Action
@@ -81,7 +81,7 @@ class Controller {
             $arObj = (array) $obj;
             foreach ($arObj as $key => $value) {
                 $attribute = str_replace(get_class($obj), "", $key);
-                if(is_object($value) || is_array($value)){
+                if (is_object($value) || is_array($value)) {
                     $value = $this->toArray($value);
                 }
                 $arr[$attribute] = $value;
