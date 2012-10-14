@@ -1,15 +1,17 @@
 <?php
 
-namespace flowcode\mvc\kernel;
+namespace flowcode\smooth\mvc;
 
-use flowcode\mvc\kernel\HttpRequest;
+use flowcode\smooth\mvc\HttpRequestBuilder;
 
 class Kernel {
 
-    public function __construct($mode) {
+    public function __construct() {
+        
+    }
 
+    public function init($mode) {
         session_start();
-        $_SESSION['ckfinder_baseUrl'] = '/upload/';
 
         if ('prod' == $mode) {
             register_shutdown_function(array($this, 'shutdown'));
@@ -18,7 +20,7 @@ class Kernel {
 
     public function handleRequest($requestedUrl) {
 
-        require(__DIR__ . '/Autoloader.class.php');
+        require_once (__DIR__ . '/Autoloader.class.php');
 
         $request = $this->getRequest($requestedUrl);
 
@@ -73,7 +75,7 @@ class Kernel {
         }
     }
 
-    public function validClass($classname) {
+    private function validClass($classname) {
         $params = explode('\\', $classname);
         $filename = __DIR__ . '/../../' . $params[2] . '/' . $params[3] . '/' . $params[4] . '.class.php';
         return file_exists($filename);

@@ -1,6 +1,6 @@
 <?php
 
-namespace flowcode\mvc\kernel;
+namespace flowcode\smooth\mvc;
 
 /**
  * Description of Router.

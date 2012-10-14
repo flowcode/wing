@@ -1,6 +1,8 @@
 <?php
 
-namespace flowcode\mvc\kernel;
+namespace flowcode\smooth\mvc;
+
+use flowcode\smooth\mvc\HttpRequest;
 
 require_once dirname(__FILE__) . '/../../../../../src/flowcode/smooth/mvc/HttpRequest.class.php';
 

@@ -1,7 +1,10 @@
 <?php
 
-namespace flowcode\mvc\kernel;
+namespace flowcode\smooth\mvc;
 
+/**
+ * 
+ */
 class HttpRequest {
 
     private $requestedUrl;
@@ -9,53 +12,14 @@ class HttpRequest {
     private $action;
     private $params;
 
-    public function __construct($requestedUrl) {
-        $this->requestedUrl = $requestedUrl;
-        $array = explode('/', $requestedUrl);
-
-        // controller
-        $c = "home";
-        if (!empty($array[1])) {
-            $c = $array[1];
-            // primero intento buscar una ruta definida
-            $routedController = Router::get(strtolower($array[1]), "controller");
-            if ($routedController != NULL) {
-                $c = $routedController;
-            }
-        }
-        $this->controller = $c;
-
-
-        // action
-        $a = "index";
-        if (!empty($array[2])) {
-            $a = $array[2];
-            // primero intento buscar una ruta definida
-            $actions = Router::get(strtolower($array[1]), "actions");
-            if ($actions != NULL && isset($actions[$a])) {
-                $a = $actions[$a];
-            }
-        } else {
-
-            if (isset($array[1])) {
-                $actions = Router::get(strtolower($array[1]), "actions");
-                if ($actions != NULL) {
-                    $a = (isset($actions["default"])) ? $actions["default"] : "index";
-                }
-            }
-        }
-        $this->action = $a;
+    public function __construct() {
         $this->params = array();
-        foreach ($array as $key => $value) {
-            if ($key > 2)
-                $this->params[] = $value;
-        }
+    }
+    
+    public function setRequestedUrl($requestedUrl){
+        $this->requestedUrl = $requestedUrl;
     }
 
-    /**
-     * 
-     * @return type 
-     */
     public function getControllerClass() {
         return ucwords($this->controller) . "Controller";
     }
@@ -64,12 +28,13 @@ class HttpRequest {
         return $this->controller;
     }
 
-    public function getAction() {
-        return $this->action;
-    }
 
     public function setControllerName($controllerName) {
         $this->controller = $controllerName;
+    }
+    
+    public function getAction() {
+        return $this->action;
     }
 
     public function setAction($actionName) {
@@ -82,6 +47,10 @@ class HttpRequest {
      */
     public function getParams() {
         return $this->params;
+    }
+
+    public function setParams($params) {
+        $this->params = $params;
     }
 
     /**
@@ -101,22 +70,22 @@ class HttpRequest {
                 }
             }
         }
-        if(is_null($value)){
-            if(isset($_POST[$parameter])){
+        if (is_null($value)) {
+            if (isset($_POST[$parameter])) {
                 $value = $_POST[$parameter];
             }
         }
-        if(is_null($value)){
-            if(isset($_GET[$parameter])){
+        if (is_null($value)) {
+            if (isset($_GET[$parameter])) {
                 $value = $_GET[$parameter];
             }
         }
-        if(is_string($value)){
+        if (is_string($value)) {
             $value = urldecode($value);
         }
         return $value;
     }
-    
+
     public function getRequestedUrl() {
         return $this->requestedUrl;
     }
