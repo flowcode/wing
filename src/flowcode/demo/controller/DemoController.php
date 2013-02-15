@@ -2,6 +2,7 @@
 
 namespace flowcode\demo\controller;
 
+use flowcode\demo\service\HelloService;
 use flowcode\smooth\mvc\Controller;
 use flowcode\smooth\mvc\HttpRequest;
 
@@ -15,9 +16,14 @@ class DemoController extends Controller {
     public function __construct() {
         $this->setIsSecure(FALSE);
     }
-    
-    public function helloAction(HttpRequest $httpRequest){
-        return "hello";
+
+    public function hello(HttpRequest $httpRequest) {
+        echo "hello";
+    }
+
+    public function helloSetup(HttpRequest $httpRequest) {
+        $helloSrv = new HelloService();
+        echo $helloSrv->getHelloMessage();
     }
 
 }

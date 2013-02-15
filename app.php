@@ -9,19 +9,18 @@ $allowed[] = "127.0.0.1";
 $ip = $_SERVER['REMOTE_ADDR'];
 
 if (!in_array($ip, $allowed)) {
-    header("Location: http://www.xn--interpeas-r6a.es/index.php");
+    echo die("You are not allowed.");
     exit;
 }
 
-$kernel_dir = __DIR__ . '/src/flowcode/mvc/kernel/Kernel.class.php';
+$kernel_dir = __DIR__ . '/src/flowcode/smooth/mvc/Kernel.php';
 
 require_once $kernel_dir;
 
-use flowcode\mvc\kernel\Kernel;
+use flowcode\smooth\mvc\Kernel;
 
-// Se instancia un kernel en modo produccion: prod
-//   Tambien esta el modo desarrollo: dev
-$kernel = new Kernel('dev');
+$kernel = new Kernel();
+$kernel->init("dev");
 
 $kernel->handleRequest($_SERVER['REQUEST_URI']);
 ?>

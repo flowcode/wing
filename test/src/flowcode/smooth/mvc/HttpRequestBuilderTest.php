@@ -2,8 +2,8 @@
 
 namespace flowcode\smooth\mvc;
 
-require_once dirname(__FILE__) . '/../../../../../src/flowcode/smooth/mvc/Autoloader.class.php';
-require_once dirname(__FILE__) . '/../../../../../src/flowcode/smooth/mvc/HttpRequestBuilder.class.php';
+require_once dirname(__FILE__) . '/../../../../../src/flowcode/smooth/mvc/Autoloader.php';
+require_once dirname(__FILE__) . '/../../../../../src/flowcode/smooth/mvc/HttpRequestBuilder.php';
 
 /**
  * Test class for HttpRequestBuilder.
