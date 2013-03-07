@@ -19,7 +19,7 @@ class HomeController extends Controller {
 
     public function index(HttpRequest $httpRequest) {
         $viewData['data'] = "index";
-        return View::getPlainView($this, "demo/view/home/index", $viewData);
+        return View::getControllerView($this, "demo/view/home/index", $viewData);
     }
 
 }

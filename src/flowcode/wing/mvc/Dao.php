@@ -11,7 +11,7 @@ use flowcode\wing\mvc\exception\DaoException;
  *
  * @author juanma
  */
-class Dao {
+abstract class Dao {
 
     private $db_server = "server";
     private $db_name = "dbname";
@@ -28,7 +28,7 @@ class Dao {
     /**
      * Return an instance from a raw array of data.
      */
-    public function getInstanceFormArray($raw);
+    public abstract function getInstanceFormArray($raw);
 
     /**
      * 
@@ -73,7 +73,7 @@ class Dao {
     }
 
     function executeQuery($query) {
-        $table = array();
+        $collection = array();
         try {
             if (!is_null($query) && is_string($query)) {
                 $connection = $this->getConnection();
@@ -82,8 +82,8 @@ class Dao {
                 if ($resultQry) {
                     if (mysql_num_rows($resultQry) != 0) {
 
-                        while ($raw = mysql_fetch_assoc($resultQry)) {
-                            $table[] = $this->getInstanceFormArray($raw);
+                        while ($raw = mysql_fetch_array($resultQry)) {
+                            $collection[] = $this->getInstanceFormArray($raw);
                         }
                         mysql_free_result($resultQry);
                     }
@@ -92,7 +92,7 @@ class Dao {
                     throw new DaoException("SQL Error: " . mysql_error());
                 }
             }
-            return $table;
+            return $collection;
         } catch (Exception $pEx) {
             throw new DaoException("Execution failed: " . $query . "  " . $pEx->getMessage());
         }
