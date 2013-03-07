@@ -24,12 +24,11 @@ class DataSource {
                 throw new \Exception("Could not connect: " . mysql_error());
             }
 
-// selecciono la base
             mysql_select_db($this->db_name, $con);
             mysql_query("SET NAMES 'utf8'");
             return $con;
         } catch (\Exception $pEx) {
-            throw new \Exception("Fallo al obtener la conexion. " . $pEx->getMessage());
+            throw new \Exception("Connection string failed. " . $pEx->getMessage());
         }
     }
 
@@ -95,19 +94,19 @@ class DataSource {
      * 
      *      Ejecuta una query sin esperar un valor de retorno.
      */
-    function executeNonQuery($pQuery) {
+    function executeNonQuery($query) {
 
         try {
             $connection = $this->getConnection();
 
-            if (!mysql_query($pQuery, $connection)) {
+            if (!mysql_query($query, $connection)) {
                 mysql_close($connection);
                 throw new \Exception("SQL Error: " . mysql_error());
             }
 
             mysql_close($connection);
         } catch (\Exception $pEx) {
-            throw new \Exception("Fallo al ejecutar la query: " . $pQuery . $pEx->getMessage());
+            throw new \Exception("Fallo al ejecutar la query: " . $query . $pEx->getMessage());
         }
     }
 
@@ -118,25 +117,20 @@ class DataSource {
      * no traer valores, retorna false.  En caso de error, muere informando el 
      * error.
      */
-    function executeQuery($pQuery) {
+    function executeQuery($query) {
 
         try {
-// Por defecto se asume una consulta con resultado vacio.
+
             $table = FALSE;
 
-            if (!is_null($pQuery) && is_string($pQuery)) {
+            if (!is_null($query) && is_string($query)) {
                 $connection = $this->getConnection();
-                $resultQry = mysql_query($pQuery, $connection);
+                $resultQry = mysql_query($query, $connection);
 
                 if ($resultQry) {
 
-// La query se ejecuto sin errores.
-// die('previo rowTemplate');                
-
                     if (mysql_num_rows($resultQry) != 0) {
 
-// La query trajo al menos un registro.
-// Instancio el template de las filas.
                         $rowTemplate = array();
                         $terminar = FALSE;
                         $cntCols = mysql_num_fields($resultQry);
@@ -152,13 +146,12 @@ class DataSource {
                             }
 
                             $terminar = (( $cntCols - $cnt ) == 0);
-                        } // while
-// Instancio la tabla.
+                        }
+
                         $table = array();
 
                         while ($fila = mysql_fetch_assoc($resultQry)) {
 
-// Instancio un row en base al template.
                             $rowAux = $rowTemplate;
 
                             foreach ($rowAux as $k => $v) {
@@ -170,7 +163,7 @@ class DataSource {
 
                         mysql_free_result($resultQry);
                     }
-// Libero la conexion.
+
                     mysql_close($connection);
                 } else {
                     throw new \Exception("SQL Error: " . mysql_error());
@@ -179,17 +172,12 @@ class DataSource {
 
             return $table;
         } catch (\Exception $pEx) {
-            throw new \Exception("Fallo al ejecutar la query: " . $pQuery . "  " . $pEx->getMessage());
+            throw new \Exception("Fallo al ejecutar la query: " . $query . "  " . $pEx->getMessage());
         }
     }
 
-    /**
-     *  Execute Insert:
-     * 
-     *      Ejecuta una query de tipo insert devolviendo el id del registro asociado en la tabla.  Si la tabla no posee
-     * campo id, la ejecución de la query se lleva a cabo pero el valor de retorno es indefinido.
-     */
-    function executeInsert($pQuery) {
+
+    function executeInsert($query) {
 
         $connection = NULL;
 
@@ -197,7 +185,7 @@ class DataSource {
             $connection = $this->getConnection();
             $id = -1;
 
-            if (mysql_query($pQuery, $connection)) {
+            if (mysql_query($query, $connection)) {
                 $id = mysql_insert_id();
             } else {
                 throw new \Exception("SQL Error: " . mysql_error());
