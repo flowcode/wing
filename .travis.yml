@@ -1,7 +1,4 @@
 language: php
 php:
-  - "5.4"
   - "5.3"
-before_script:
-  - php "test/bootstrap.php"
-script: "phpunit test/"
+script: "phpunit --configuration test/configuration.xml test/"
