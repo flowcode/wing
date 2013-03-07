@@ -1,5 +1,5 @@
-smooth
+wing
 ======
-[![Build Status](https://travis-ci.org/flowcode/smooth.png)](https://travis-ci.org/flowcode/smooth)
+[![Build Status](https://travis-ci.org/flowcode/wing.png)](https://travis-ci.org/flowcode/wing)
 
 Simple PHP Framework

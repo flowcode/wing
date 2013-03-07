@@ -2,8 +2,9 @@
 
 namespace flowcode\demo\controller;
 
-use flowcode\smooth\mvc\Controller;
-use flowcode\smooth\mvc\HttpRequest;
+use flowcode\wing\mvc\Controller;
+use flowcode\wing\mvc\HttpRequest;
+use flowcode\wing\mvc\View;
 
 /**
  * Description of HomeController
@@ -15,9 +16,10 @@ class HomeController extends Controller {
     public function __construct() {
         $this->setIsSecure(FALSE);
     }
-    
-    public function welcomeAction(HttpRequest $httpRequest){
-        return "ok";
+
+    public function index(HttpRequest $httpRequest) {
+        $viewData['data'] = "index";
+        return View::getPlainView($this, "demo/view/home/index", $viewData);
     }
 
 }

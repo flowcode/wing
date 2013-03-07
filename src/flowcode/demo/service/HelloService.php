@@ -2,7 +2,7 @@
 
 namespace flowcode\demo\service;
 
-use flowcode\smooth\mvc\Config;
+use flowcode\wing\mvc\Config;
 
 /**
  * Description of HelloService

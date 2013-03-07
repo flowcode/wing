@@ -3,8 +3,8 @@
 namespace flowcode\demo\controller;
 
 use flowcode\demo\service\HelloService;
-use flowcode\smooth\mvc\Controller;
-use flowcode\smooth\mvc\HttpRequest;
+use flowcode\wing\mvc\Controller;
+use flowcode\wing\mvc\HttpRequest;
 
 /**
  * Description of HomeController
