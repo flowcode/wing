@@ -47,31 +47,11 @@ class KernelTest extends \PHPUnit_Framework_TestCase {
      */
     public function testHandleRequest() {
         
-        $requestedUrl = "sarasa";
+        $requestedUrl = "undefined";
         $this->object->handleRequest($requestedUrl);
         
     }
 
-    /**
-     * @covers flowcode\wing\mvc\Kernel::getRequest
-     * @todo   Implement testGetRequest().
-     */
-    public function testGetRequest() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers flowcode\wing\mvc\Kernel::shutdown
-     * @todo   Implement testShutdown().
-     */
-    public function testShutdown() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
+    
 
 }
