@@ -1,0 +1,12 @@
+2013-03-14 14:20:11 - CRIT --> Call to undefined method flowcode\wing\controller\DefaultController::isSecure()
+2013-03-14 14:20:32 - CRIT --> Call to undefined method flowcode\wing\controller\DefaultController::isSecure()
+2013-03-14 14:21:30 - CRIT --> Call to undefined method flowcode\wing\controller\DefaultController::login()
+2013-03-14 14:23:31 - CRIT --> Call to undefined method flowcode\wing\controller\DefaultController::login()
+2013-03-14 14:23:46 - CRIT --> Call to undefined method flowcode\wing\controller\DefaultController::login()
+2013-03-14 14:24:48 - CRIT --> Call to a member function render() on a non-object
+2013-03-14 14:25:12 - CRIT --> Call to a member function render() on a non-object
+2013-03-14 14:27:23 - CRIT --> Call to a member function render() on a non-object
+2013-03-14 14:27:35 - CRIT --> Call to a member function render() on a non-object
+2013-03-14 14:28:24 - CRIT --> Non-static method flowcode\wing\mvc\HttpRequestBuilder::buildFromRequestUrl() should not be called statically, assuming $this from incompatible context
+2013-03-14 14:29:19 - CRIT --> Non-static method flowcode\wing\mvc\HttpRequestBuilder::buildFromRequestUrl() should not be called statically, assuming $this from incompatible context
+2013-03-14 14:37:07 - CRIT --> Undefined index: data
