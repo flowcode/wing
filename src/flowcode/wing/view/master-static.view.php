@@ -13,7 +13,7 @@
         <div id="header">
             <div class="container">
                 <div id="siteTitle">
-                    <span>Demo</span>
+                    <span>Error - Demo</span>
                 </div>
                 <div id="main-menu">
                     <ul>

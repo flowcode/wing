@@ -20,14 +20,16 @@ class Setup extends WingSetup {
 
         /* dirs */
         $this->dirs['public'] = "/public";
+        $this->dirs['log'] = "/log";
 
         /* default controller */
         $this->defaultController = "\\flowcode\\wing\\controller\\DefaultController";
         $this->defaultMethod = "hello";
+        $this->errorMethod = "error";
 
-        /* cms login manager */
-        $this->loginController = "\\flowcode\\cms\\controller\\AdminLoginController";
-        $this->loginMethod = "index";
+        /* login manager */
+        $this->loginController = "\\flowcode\\wing\\controller\\DefaultController";
+        $this->loginMethod = "login";
         $this->restrictedMethod = "restricted";
     }
 
