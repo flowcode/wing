@@ -14,13 +14,6 @@ class DefaultController extends Controller {
 
     function __construct() {
         $this->setIsSecure(false);
-<<<<<<< HEAD
-    }
-
-    public function hello() {
-        $viewData["data"] = "handled by default controller.";
-        return View::getPlainView($this, "wing/view/default", $viewData);
-=======
         $this->setName("defaultController");
         $this->setModule("wing");
     }
@@ -33,7 +26,6 @@ class DefaultController extends Controller {
     public function error() {
         $viewData['data'] = "";
         return View::getViewWithSpecificMaster($this, "wing/view/page/error-page", $viewData, "wing/view/master-static");
->>>>>>> development
     }
 
 }

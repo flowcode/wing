@@ -1,0 +1,12 @@
+{
+    "name": "flowcode/wing",
+    "description": "Simple PHP Framework.",
+    "authors": [
+        {
+            "name": "Juan Manuel Agüero",
+            "email": "jaguero@flowcode.com.ar"
+        }
+    ],
+    "require": {
+    }
+}
