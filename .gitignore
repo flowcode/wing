@@ -1,9 +1,2 @@
-# Log
-log/*
-
-# netbeand dir
-nbproject/*
-
-# Configuration files
-app/config/parameters.ini
-/nbproject/private/
+log
+vendor
