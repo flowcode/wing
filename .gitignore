@@ -1,12 +1,8 @@
-# Bootstrap
-app/bootstrap*
+# Log
+log/*
 
-# Symfony directories
-vendor/*
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
+# netbeand dir
+nbproject/*
 
 # Configuration files
 app/config/parameters.ini
